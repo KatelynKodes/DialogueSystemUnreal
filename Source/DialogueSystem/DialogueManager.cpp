@@ -16,7 +16,7 @@ ADialogueManager::ADialogueManager()
 void ADialogueManager::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	startConversation(_debugConvo); //delete later
 }
 
 // Called every frame
@@ -42,10 +42,14 @@ void ADialogueManager::startConversation(UDialogueDataAsset* asset)
 	}
 
 	//update the text
+	updateText(_currentConvo->lines[0].SpeakerName, _lines[0]);
 }
 
-void ADialogueManager::updateText()
+void ADialogueManager::updateText(FString speakerName, FString speakertext)
 {
+	FColor speakerColor = _currentConvo->lines[_lineNum].TextColor;
+	FString DialogueText = speakerName + ":" + speakertext;
+	GEngine->AddOnScreenDebugMessage(-1, 3.0f, speakerColor, DialogueText);
 }
 
 void ADialogueManager::nextLine()
@@ -55,6 +59,7 @@ void ADialogueManager::nextLine()
 	if (_lineNum <= _currentConvo->lines.Num())
 	{
 		//Update text
+		updateText(_currentConvo->lines[_lineNum].SpeakerName, _lines[_lineNum]);
 	}
 	else
 	{

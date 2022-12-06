@@ -35,7 +35,7 @@ public:
 	/// current line of the conversation
 	/// </summary>
 	UFUNCTION(BlueprintCallable)
-	void updateText();
+	void updateText(FString speakerName, FString speakertext);
 
 private:
 	/// <summary>
@@ -54,6 +54,10 @@ private:
 	TArray<FString> _lines;
 
 	class UDialogueDataAsset* _currentConvo;
+
+	UPROPERTY(EditAnywhere)
+	class UDialogueDataAsset* _debugConvo; //Delete this
+
 	int _lineNum;
 	bool _conversationStarted = false;
 };

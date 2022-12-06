@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{4042A73B-4E43-1A36-4B23-C8BCEA7B5951}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "DialogueSystem",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}

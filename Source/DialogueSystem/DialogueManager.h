@@ -22,13 +22,38 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	void StartConversation()
+
+	/// <summary>
+	/// Starts a conversation using a data asset of type DialogueDataAsset
+	/// </summary>
+	/// <param name="asset"></param>
+	UFUNCTION(CallInEditor)
+	void startConversation(class UDialogueDataAsset* asset);
+	
+	/// <summary>
+	/// A function called by the UI widget blueprint to update the text on the screen according to the
+	/// current line of the conversation
+	/// </summary>
+	UFUNCTION(BlueprintCallable)
+	void updateText();
+
 private:
-	void nextLine()
+	/// <summary>
+	/// Goes to the next line of dialogue
+	/// </summary>
+	UFUNCTION(CallInEditor)
+	void nextLine();
+
+	/// <summary>
+	/// Ends the conversation
+	/// </summary>
 	void endConversation();
 
 private:
+	UPROPERTY(VisibleAnywhere)
 	TArray<FString> _lines;
-	new UDialogueDataAsset* _currentDialogue;
+
+	class UDialogueDataAsset* _currentConvo;
 	int _lineNum;
+	bool _conversationStarted = false;
 };

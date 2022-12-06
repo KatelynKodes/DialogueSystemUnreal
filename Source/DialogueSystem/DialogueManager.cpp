@@ -2,6 +2,7 @@
 
 
 #include "DialogueManager.h"
+#include "DialogueDataAsset.h"
 
 // Sets default values
 ADialogueManager::ADialogueManager()
@@ -23,5 +24,46 @@ void ADialogueManager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void ADialogueManager::startConversation(UDialogueDataAsset* asset)
+{
+	//Set the line number to 0
+	_lineNum = 0;
+
+	//set the current convo to this asset
+	_currentConvo = asset;
+
+	//Loop through the current convo lines array
+	for (int i = 0; i < _currentConvo->lines.Num(); i++)
+	{
+		//Add the current line's speaker text to the dialougemanager's lines
+		_lines.Add(_currentConvo->lines[i].SpeakerText);
+	}
+
+	//update the text
+}
+
+void ADialogueManager::updateText()
+{
+}
+
+void ADialogueManager::nextLine()
+{
+	_lineNum++;
+
+	if (_lineNum <= _currentConvo->lines.Num())
+	{
+		//Update text
+	}
+	else
+	{
+		endConversation();
+	}
+}
+
+void ADialogueManager::endConversation()
+{
+	_conversationStarted = false;
 }
 

@@ -45,11 +45,11 @@ void ADialogueManager::startConversation(UDialogueDataAsset* asset)
 	updateText(_currentConvo->lines[0].SpeakerName, _lines[0]);
 }
 
-void ADialogueManager::updateText(FString speakerName, FString speakertext)
+void ADialogueManager::updateText(FString speakername, FString speakertext)
 {
-	FColor speakerColor = _currentConvo->lines[_lineNum].TextColor;
-	FString DialogueText = speakerName + ":" + speakertext;
-	GEngine->AddOnScreenDebugMessage(-1, 3.0f, speakerColor, DialogueText);
+	SpeakerName = speakername;
+	DialogueText = speakertext;
+	DialogueColor = _currentConvo->lines[_lineNum].TextColor;
 }
 
 void ADialogueManager::nextLine()

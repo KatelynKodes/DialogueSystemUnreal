@@ -35,7 +35,7 @@ public:
 	/// current line of the conversation
 	/// </summary>
 	UFUNCTION(BlueprintCallable)
-	void updateText(FString speakerName, FString speakertext);
+	void updateText(FString speakername, FString speakertext);
 
 private:
 	/// <summary>
@@ -49,6 +49,14 @@ private:
 	/// </summary>
 	void endConversation();
 
+public:
+	UPROPERTY(BlueprintReadWrite)
+	FString DialogueText;
+	UPROPERTY(BlueprintReadWrite)
+	FColor DialogueColor;
+	UPROPERTY(BlueprintReadWrite)
+	FString SpeakerName;
+
 private:
 	UPROPERTY(VisibleAnywhere)
 	TArray<FString> _lines;
@@ -60,4 +68,5 @@ private:
 
 	int _lineNum;
 	bool _conversationStarted = false;
+
 };

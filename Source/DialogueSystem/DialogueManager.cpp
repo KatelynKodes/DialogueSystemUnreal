@@ -3,6 +3,7 @@
 
 #include "DialogueManager.h"
 #include "DialogueDataAsset.h"
+#include "DialogueUIWidget.h"
 
 // Sets default values
 ADialogueManager::ADialogueManager()
@@ -47,9 +48,9 @@ void ADialogueManager::startConversation(UDialogueDataAsset* asset)
 
 void ADialogueManager::updateText(FString speakername, FString speakertext)
 {
-	SpeakerName = speakername;
-	DialogueText = speakertext;
-	DialogueColor = _currentConvo->lines[_lineNum].TextColor;
+	_dialogueUI->SpeakerBoxText = speakername;
+	_dialogueUI->DialogueBoxText = speakertext;
+	_dialogueUI->BoxColor = _currentConvo->lines[_lineNum].TextColor;
 }
 
 void ADialogueManager::nextLine()

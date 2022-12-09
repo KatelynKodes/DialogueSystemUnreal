@@ -5,10 +5,10 @@
 
 void UDialogueUIWidget::NativeConstruct()
 {
-
+	Super::NativeConstruct();
 }
 
 void UDialogueUIWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 {
-
+	Super::NativeTick(MyGeometry, InDeltaTime);
 }

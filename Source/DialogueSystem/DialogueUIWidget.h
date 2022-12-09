@@ -17,4 +17,14 @@ class DIALOGUESYSTEM_API UDialogueUIWidget : public UUserWidget
 private:
 	void NativeConstruct() override;
 	void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
+
+public:
+	UPROPERTY(BlueprintReadWrite)
+	FString SpeakerBoxText;
+
+	UPROPERTY(BlueprintReadWrite)
+	FString DialogueBoxText;
+
+	UPROPERTY(BlueprintReadWrite)
+	FColor BoxColor;
 };

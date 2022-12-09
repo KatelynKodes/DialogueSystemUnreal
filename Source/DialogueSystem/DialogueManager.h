@@ -49,14 +49,6 @@ private:
 	/// </summary>
 	void endConversation();
 
-public:
-	UPROPERTY(BlueprintReadWrite)
-	FString DialogueText;
-	UPROPERTY(BlueprintReadWrite)
-	FColor DialogueColor;
-	UPROPERTY(BlueprintReadWrite)
-	FString SpeakerName;
-
 private:
 	UPROPERTY(VisibleAnywhere)
 	TArray<FString> _lines;
@@ -64,7 +56,10 @@ private:
 	class UDialogueDataAsset* _currentConvo;
 
 	UPROPERTY(EditAnywhere)
-	class UDialogueDataAsset* _debugConvo; //Delete this
+	class UDialogueDataAsset* _debugConvo;
+
+	UPROPERTY(EditAnywhere)
+	class UDialogueUIWidget* _dialogueUI;
 
 	int _lineNum;
 	bool _conversationStarted = false;

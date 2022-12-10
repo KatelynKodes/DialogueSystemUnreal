@@ -2,6 +2,7 @@
 
 
 #include "DialogueUIWidget.h"
+#include "DialogueManager.h"
 
 void UDialogueUIWidget::NativeConstruct()
 {

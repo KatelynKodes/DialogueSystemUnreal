@@ -48,9 +48,6 @@ void ADialogueManager::startConversation(UDialogueDataAsset* asset)
 
 void ADialogueManager::updateText(FString speakername, FString speakertext)
 {
-	_dialogueUI->SpeakerBoxText = speakername;
-	_dialogueUI->DialogueBoxText = speakertext;
-	_dialogueUI->BoxColor = _currentConvo->lines[_lineNum].TextColor;
 }
 
 void ADialogueManager::nextLine()

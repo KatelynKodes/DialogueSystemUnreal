@@ -25,6 +25,10 @@ public:
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
 	FString DialogueBoxText;
 
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	UPROPERTY(BlueprintReadWrite)
 	FColor BoxColor;
+
+
+private:
+	class ADialogueManager* _dialogueManager;
 };

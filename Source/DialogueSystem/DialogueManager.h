@@ -58,9 +58,6 @@ private:
 	UPROPERTY(EditAnywhere)
 	class UDialogueDataAsset* _debugConvo;
 
-	UPROPERTY(EditAnywhere)
-	class UDialogueUIWidget* _dialogueUI;
-
 	int _lineNum;
 	bool _conversationStarted = false;
 

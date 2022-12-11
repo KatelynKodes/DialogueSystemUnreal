@@ -46,8 +46,10 @@ void ADialogueManager::startConversation(UDialogueDataAsset* asset)
 	updateText(_currentConvo->lines[0].SpeakerName, _lines[0]);
 }
 
-void ADialogueManager::updateText(FString speakername, FString speakertext)
+void ADialogueManager::updateText(FString speakername, FString dialogue)
 {
+	SpeakerText = speakername;
+	DialogueText = dialogue;
 }
 
 void ADialogueManager::nextLine()

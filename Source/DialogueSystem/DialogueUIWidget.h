@@ -28,7 +28,7 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	FColor BoxColor;
 
-
 private:
+	UPROPERTY(VisibleAnywhere)
 	class ADialogueManager* _dialogueManager;
 };

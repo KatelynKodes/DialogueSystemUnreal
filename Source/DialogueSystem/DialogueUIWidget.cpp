@@ -3,13 +3,28 @@
 
 #include "DialogueUIWidget.h"
 #include "DialogueManager.h"
+#include "Kismet/GameplayStatics.h" 
 
 void UDialogueUIWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
+
+	if (!_dialogueManager)
+	{
+		//Finds the dialogue manager actor in the scene 
+		//THERE SHOULD ONLY BE ONE DIALOGUE MANAGER
+		AActor* ManagerActor = UGameplayStatics::GetActorOfClass(GetWorld(), ADialogueManager::StaticClass());
+
+		_dialogueManager = Cast<ADialogueManager>(ManagerActor);
+		FString confirmationText = "Dialogue Manager set, it is now: " + _dialogueManager->GetFName().ToString();
+
+	}
 }
 
 void UDialogueUIWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 {
 	Super::NativeTick(MyGeometry, InDeltaTime);
+
+	SpeakerBoxText = _dialogueManager->SpeakerText;
+	DialogueBoxText = _dialogueManager->DialogueText;
 }

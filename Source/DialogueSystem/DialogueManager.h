@@ -35,7 +35,7 @@ public:
 	/// current line of the conversation
 	/// </summary>
 	UFUNCTION(BlueprintCallable)
-	void updateText(FString speakername, FString speakertext);
+	void updateText(FString speakername, FString dialogue);
 
 private:
 	/// <summary>
@@ -48,6 +48,17 @@ private:
 	/// Ends the conversation
 	/// </summary>
 	void endConversation();
+
+public:
+	/// <summary>
+	/// Text that should be displayed in the speaker box
+	/// </summary>
+	FString SpeakerText;
+
+	/// <summary>
+	/// Text that should be displayed in the dialogue box
+	/// </summary>
+	FString DialogueText;
 
 private:
 	UPROPERTY(VisibleAnywhere)

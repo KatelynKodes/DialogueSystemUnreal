@@ -60,6 +60,11 @@ public:
 	/// </summary>
 	FString DialogueText;
 
+	/// <summary>
+	/// The color of the box
+	/// </summary>
+	FLinearColor TextBoxColor;
+
 private:
 	UPROPERTY(VisibleAnywhere)
 	TArray<FString> _lines;
@@ -70,6 +75,6 @@ private:
 	class UDialogueDataAsset* _debugConvo;
 
 	int _lineNum;
-	bool _conversationStarted = false;
+	bool _convoIsHappening = false;
 
 };

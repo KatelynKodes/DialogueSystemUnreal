@@ -19,14 +19,14 @@ private:
 	void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
 
 public:
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	UPROPERTY(BlueprintReadWrite)
 	FString SpeakerBoxText;
 
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	UPROPERTY(BlueprintReadWrite)
 	FString DialogueBoxText;
 
 	UPROPERTY(BlueprintReadWrite)
-	FColor BoxColor;
+	FLinearColor BoxColor;
 
 private:
 	UPROPERTY(VisibleAnywhere)

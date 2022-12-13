@@ -32,4 +32,7 @@ class DIALOGUESYSTEM_API UDialogueDataAsset : public UDataAsset
 public:
 	UPROPERTY(EditAnywhere)
 	TArray<FLine> lines;
+
+	UPROPERTY(EditAnywhere)
+	UDialogueDataAsset* branchingConvo;
 };

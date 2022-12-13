@@ -16,7 +16,6 @@ void UDialogueUIWidget::NativeConstruct()
 		AActor* ManagerActor = UGameplayStatics::GetActorOfClass(GetWorld(), ADialogueManager::StaticClass());
 
 		_dialogueManager = Cast<ADialogueManager>(ManagerActor);
-		FString confirmationText = "Dialogue Manager set, it is now: " + _dialogueManager->GetFName().ToString();
 
 	}
 }
@@ -27,4 +26,5 @@ void UDialogueUIWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTim
 
 	SpeakerBoxText = _dialogueManager->SpeakerText;
 	DialogueBoxText = _dialogueManager->DialogueText;
+	BoxColor = _dialogueManager->TextBoxColor;
 }

@@ -29,8 +29,14 @@ void ADialogueManager::Tick(float DeltaTime)
 
 void ADialogueManager::startConversation(UDialogueDataAsset* asset)
 {
+	//Set conversationIsHappening to true
+	_convoIsHappening = true;
+
 	//Set the line number to 0
 	_lineNum = 0;
+
+	//Clear the lines array
+	_lines.Empty();
 
 	//set the current convo to this asset
 	_currentConvo = asset;
@@ -50,13 +56,21 @@ void ADialogueManager::updateText(FString speakername, FString dialogue)
 {
 	SpeakerText = speakername;
 	DialogueText = dialogue;
+	TextBoxColor = _currentConvo->lines[_lineNum].TextColor.ReinterpretAsLinear();
 }
 
 void ADialogueManager::nextLine()
 {
+	//If a conversation is not happening
+	if (!_convoIsHappening)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Red, TEXT("NO MORE TEXT TO DISPLAY"));
+		return;
+	}
+
 	_lineNum++;
 
-	if (_lineNum <= _currentConvo->lines.Num())
+	if (_lineNum < _currentConvo->lines.Num())
 	{
 		//Update text
 		updateText(_currentConvo->lines[_lineNum].SpeakerName, _lines[_lineNum]);
@@ -69,6 +83,15 @@ void ADialogueManager::nextLine()
 
 void ADialogueManager::endConversation()
 {
-	_conversationStarted = false;
+	if (_currentConvo->branchingConvo)
+	{
+		startConversation(_currentConvo->branchingConvo);
+	}
+	else
+	{
+		_convoIsHappening = false;
+		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("Conversation has ended"));
+	}
+	
 }
 

@@ -87,6 +87,10 @@ void ADialogueManager::endConversation()
 	{
 		startConversation(_currentConvo->branchingConvo);
 	}
+	else if (_currentConvo->options.Num() > 0)
+	{
+		_optionNum = _currentConvo->options.Num();
+	}
 	else
 	{
 		_convoIsHappening = false;

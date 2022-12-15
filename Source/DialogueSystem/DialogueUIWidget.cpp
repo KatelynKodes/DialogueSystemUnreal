@@ -36,8 +36,15 @@ void UDialogueUIWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTim
 	}
 	else
 	{
-		if(_displayingUI)
-			displayUI(false);
+		if (_dialogueManager->optionNum() > 0)
+		{
+			// Display the options on the screen
+		}
+		else
+		{
+			if (_displayingUI)
+				displayUI(false);
+		}
 	}
 }
 

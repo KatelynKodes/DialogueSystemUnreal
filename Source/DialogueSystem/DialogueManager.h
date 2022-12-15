@@ -43,6 +43,12 @@ public:
 	/// <returns>True if a conversation is currently ongoing</returns>
 	bool convoIsHappening() { return _convoIsHappening; }
 
+	/// <summary>
+	/// Returns how many options are available to the user
+	/// </summary>
+	/// <returns>An integer</returns>
+	int optionNum() { return _optionNum; }
+
 private:
 	/// <summary>
 	/// Goes to the next line of dialogue
@@ -88,4 +94,5 @@ private:
 	int _lineNum;
 	bool _convoIsHappening = false;
 
+	int _optionNum = 0;
 };

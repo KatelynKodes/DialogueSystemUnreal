@@ -15,7 +15,6 @@ class DIALOGUESYSTEM_API UDialogueOptionButton : public UButton
 	GENERATED_BODY()
 
 public:
-	void OnCreationFromPalette() override;
 
 private:
 

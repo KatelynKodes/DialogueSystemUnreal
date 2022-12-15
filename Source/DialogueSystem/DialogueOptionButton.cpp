@@ -3,7 +3,3 @@
 
 #include "DialogueOptionButton.h"
 #include <Components/TextBlock.h>
-
-void UDialogueOptionButton::OnCreationFromPalette()
-{
-}

@@ -83,18 +83,25 @@ void ADialogueManager::nextLine()
 
 void ADialogueManager::endConversation()
 {
+	// Check if there is already a branching convo
 	if (_currentConvo->branchingConvo)
 	{
+		//If there is, start that conversation
 		startConversation(_currentConvo->branchingConvo);
 	}
+	// If there isn't any branching convo, check for options
 	else if (_currentConvo->options.Num() > 0)
 	{
+		// Set the option number to be the length of the current conversations option array
 		_optionNum = _currentConvo->options.Num();
+		//Set convo is happening to false
+		_convoIsHappening = false;
 	}
+	//Otherwise...
 	else
 	{
+		//End the conversation
 		_convoIsHappening = false;
-		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("Conversation has ended"));
 	}
 	
 }

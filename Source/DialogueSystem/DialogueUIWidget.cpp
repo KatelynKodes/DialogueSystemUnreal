@@ -5,6 +5,7 @@
 #include "DialogueManager.h"
 #include "Kismet/GameplayStatics.h"
 #include <Components/Image.h>
+#include "DialogueOptionButton.h"
 
 void UDialogueUIWidget::NativeConstruct()
 {
@@ -38,7 +39,7 @@ void UDialogueUIWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTim
 	{
 		if (_dialogueManager->optionNum() > 0)
 		{
-			// Display the options on the screen
+			displayOptions();
 		}
 		else
 		{
@@ -75,5 +76,13 @@ void UDialogueUIWidget::displayUI(bool value)
 		BoxColor.A = 0.0f;
 
 		_displayingUI = false;
+	}
+}
+
+void UDialogueUIWidget::displayOptions()
+{
+	//for each option
+	for (int i = 0; i < _dialogueManager->optionNum(); i++)
+	{
 	}
 }

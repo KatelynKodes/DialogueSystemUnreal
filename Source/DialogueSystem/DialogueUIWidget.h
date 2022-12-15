@@ -29,6 +29,11 @@ private:
 	/// <param name="value">if true, displays the UI. If false, hides the UI</param>
 	void displayUI(bool value);
 
+	/// <summary>
+	/// Displays the options on the widget
+	/// </summary>
+	void displayOptions();
+
 public:
 	UPROPERTY(BlueprintReadWrite)
 	FString SpeakerBoxText;
@@ -45,6 +50,5 @@ public:
 private:
 	UPROPERTY(VisibleAnywhere)
 	class ADialogueManager* _dialogueManager;
-
 	bool _displayingUI = false;
 };

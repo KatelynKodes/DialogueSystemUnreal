@@ -31,17 +31,17 @@ public:
 	void startConversation(class UDialogueDataAsset* asset);
 	
 	/// <summary>
-	/// A function called by the UI widget blueprint to update the text on the screen according to the
-	/// current line of the conversation
+	/// Updates the public text and color values according to the current line
 	/// </summary>
-	UFUNCTION(BlueprintCallable)
+	/// <param name="speakername">The value the SpeakerText variable has to be changed to</param>
+	/// <param name="dialogue">The value the DialogueText variable has to be changed to</param>
 	void updateText(FString speakername, FString dialogue);
 
 	/// <summary>
 	/// Returns if a conversation is currently happening
 	/// </summary>
-	/// <returns>Bool</returns>
-	bool ConvoIsHappening() { return _convoIsHappening; }
+	/// <returns>True if a conversation is currently ongoing</returns>
+	bool convoIsHappening() { return _convoIsHappening; }
 
 private:
 	/// <summary>

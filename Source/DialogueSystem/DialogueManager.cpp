@@ -10,7 +10,6 @@ ADialogueManager::ADialogueManager()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
 }
 
 // Called when the game starts or when spawned
@@ -54,10 +53,10 @@ void ADialogueManager::startConversation(UDialogueDataAsset* asset)
 
 void ADialogueManager::updateText(FString speakername, FString dialogue)
 {
-	SpeakerText = speakername;
-	DialogueText = dialogue;
 	TextBoxColor = _currentConvo->lines[_lineNum].TextBoxColor.ReinterpretAsLinear();
 	TextColor = _currentConvo->lines[_lineNum].TextColor.ReinterpretAsLinear();
+	SpeakerText = speakername;
+	DialogueText = dialogue;
 }
 
 void ADialogueManager::nextLine()

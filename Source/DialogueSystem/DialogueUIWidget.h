@@ -21,7 +21,13 @@ private:
 	/// <summary>
 	/// Updates the text being displayed on screen
 	/// </summary>
-	void UpdateText();
+	void updateText();
+
+	/// <summary>
+	/// sets the UI to be either visible or hidden depending on the boolean value passed in
+	/// </summary>
+	/// <param name="value">if true, displays the UI. If false, hides the UI</param>
+	void displayUI(bool value);
 
 public:
 	UPROPERTY(BlueprintReadWrite)
@@ -39,4 +45,6 @@ public:
 private:
 	UPROPERTY(VisibleAnywhere)
 	class ADialogueManager* _dialogueManager;
+
+	bool _displayingUI = false;
 };

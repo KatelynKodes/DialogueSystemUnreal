@@ -3,7 +3,8 @@
 
 #include "DialogueUIWidget.h"
 #include "DialogueManager.h"
-#include "Kismet/GameplayStatics.h" 
+#include "Kismet/GameplayStatics.h"
+#include <Components/Image.h>
 
 void UDialogueUIWidget::NativeConstruct()
 {
@@ -18,22 +19,54 @@ void UDialogueUIWidget::NativeConstruct()
 		_dialogueManager = Cast<ADialogueManager>(ManagerActor);
 
 	}
+
+	displayUI(_displayingUI);
 }
 
 void UDialogueUIWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 {
 	Super::NativeTick(MyGeometry, InDeltaTime);
 
-	if (_dialogueManager->ConvoIsHappening())
+	if (_dialogueManager->convoIsHappening())
 	{
-		UpdateText();
+		if (!_displayingUI)
+			displayUI(true);
+
+		updateText();
+	}
+	else
+	{
+		if(_displayingUI)
+			displayUI(false);
 	}
 }
 
-void UDialogueUIWidget::UpdateText()
+void UDialogueUIWidget::updateText()
 {
 	SpeakerBoxText = _dialogueManager->SpeakerText;
 	DialogueBoxText = _dialogueManager->DialogueText;
 	BoxColor = _dialogueManager->TextBoxColor;
 	TextColor = _dialogueManager->TextColor;
+}
+
+void UDialogueUIWidget::displayUI(bool value)
+{
+	if (value)
+	{
+		//Set the UI to be visible
+		BoxColor.A = 1.0f;
+
+		_displayingUI = true;
+	}
+	else
+	{
+		//Clear the text
+		SpeakerBoxText = "";
+		DialogueBoxText = "";
+
+		//Set the UI to be invisible
+		BoxColor.A = 0.0f;
+
+		_displayingUI = false;
+	}
 }

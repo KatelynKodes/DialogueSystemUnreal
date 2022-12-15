@@ -15,6 +15,9 @@ struct FLine
 	FString SpeakerName;
 	
 	UPROPERTY(EditAnywhere)
+	FColor TextBoxColor = FColor(0.0f, 0.0f, 0.0f, 255.0f);
+
+	UPROPERTY(EditAnywhere)
 	FColor TextColor = FColor(0.0f, 0.0f, 0.0f, 255.0f);
 
 	UPROPERTY(EditAnywhere)

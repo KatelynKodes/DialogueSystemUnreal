@@ -56,7 +56,8 @@ void ADialogueManager::updateText(FString speakername, FString dialogue)
 {
 	SpeakerText = speakername;
 	DialogueText = dialogue;
-	TextBoxColor = _currentConvo->lines[_lineNum].TextColor.ReinterpretAsLinear();
+	TextBoxColor = _currentConvo->lines[_lineNum].TextBoxColor.ReinterpretAsLinear();
+	TextColor = _currentConvo->lines[_lineNum].TextColor.ReinterpretAsLinear();
 }
 
 void ADialogueManager::nextLine()

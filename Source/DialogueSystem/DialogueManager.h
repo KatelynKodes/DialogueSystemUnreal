@@ -37,6 +37,12 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void updateText(FString speakername, FString dialogue);
 
+	/// <summary>
+	/// Returns if a conversation is currently happening
+	/// </summary>
+	/// <returns>Bool</returns>
+	bool ConvoIsHappening() { return _convoIsHappening; }
+
 private:
 	/// <summary>
 	/// Goes to the next line of dialogue
@@ -64,6 +70,11 @@ public:
 	/// The color of the box
 	/// </summary>
 	FLinearColor TextBoxColor;
+
+	/// <summary>
+	/// The color of the text
+	/// </summary>
+	FLinearColor TextColor;
 
 private:
 	UPROPERTY(VisibleAnywhere)

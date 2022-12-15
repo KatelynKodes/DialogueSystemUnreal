@@ -18,6 +18,11 @@ private:
 	void NativeConstruct() override;
 	void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
 
+	/// <summary>
+	/// Updates the text being displayed on screen
+	/// </summary>
+	void UpdateText();
+
 public:
 	UPROPERTY(BlueprintReadWrite)
 	FString SpeakerBoxText;
@@ -27,6 +32,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 	FLinearColor BoxColor;
+
+	UPROPERTY(BlueprintReadWrite)
+	FLinearColor TextColor;
 
 private:
 	UPROPERTY(VisibleAnywhere)

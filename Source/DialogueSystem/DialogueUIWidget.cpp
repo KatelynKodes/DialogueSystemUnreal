@@ -24,7 +24,16 @@ void UDialogueUIWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTim
 {
 	Super::NativeTick(MyGeometry, InDeltaTime);
 
+	if (_dialogueManager->ConvoIsHappening())
+	{
+		UpdateText();
+	}
+}
+
+void UDialogueUIWidget::UpdateText()
+{
 	SpeakerBoxText = _dialogueManager->SpeakerText;
 	DialogueBoxText = _dialogueManager->DialogueText;
 	BoxColor = _dialogueManager->TextBoxColor;
+	TextColor = _dialogueManager->TextColor;
 }

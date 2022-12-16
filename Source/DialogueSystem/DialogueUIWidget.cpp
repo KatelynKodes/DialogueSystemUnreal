@@ -5,7 +5,7 @@
 #include "DialogueManager.h"
 #include "Kismet/GameplayStatics.h"
 #include <Components/Image.h>
-#include "DialogueOptionButton.h"
+#include "OptionButtonWidget.h"
 
 void UDialogueUIWidget::NativeConstruct()
 {
@@ -17,6 +17,7 @@ void UDialogueUIWidget::NativeConstruct()
 		//THERE SHOULD ONLY BE ONE DIALOGUE MANAGER
 		AActor* ManagerActor = UGameplayStatics::GetActorOfClass(GetWorld(), ADialogueManager::StaticClass());
 
+		//Casts the actor as a dialogue manager
 		_dialogueManager = Cast<ADialogueManager>(ManagerActor);
 
 	}
@@ -39,7 +40,8 @@ void UDialogueUIWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTim
 	{
 		if (_dialogueManager->optionNum() > 0)
 		{
-			displayOptions();
+			if(!_displayingOptions)
+				displayOptions();
 		}
 		else
 		{
@@ -81,8 +83,25 @@ void UDialogueUIWidget::displayUI(bool value)
 
 void UDialogueUIWidget::displayOptions()
 {
-	//for each option
-	for (int i = 0; i < _dialogueManager->optionNum(); i++)
+	//Empty the current options list
+	_optionButtons.Empty();
+
+	//For every option
+	for (int i = 0; i <= _dialogueManager->optionNum(); i++)
 	{
+		//Create a userwidget
+		UUserWidget* option = CreateWidget(this, UOptionButtonWidget::StaticClass());
+		
+		//Add userwidget to the list casted as a UOptionButtonWidget
+		_optionButtons.Add(Cast<UOptionButtonWidget>(option));
 	}
+
+	//For each option in the list
+	for (int i = 0; i <= _optionButtons.Num(); i++)
+	{
+		FString debugText = "Option: " + i;
+		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Red, debugText);
+	}
+
+	_displayingOptions = true;
 }

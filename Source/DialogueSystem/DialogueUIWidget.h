@@ -50,5 +50,12 @@ public:
 private:
 	UPROPERTY(VisibleAnywhere)
 	class ADialogueManager* _dialogueManager;
+	UPROPERTY(EditAnywhere)
+	class UVerticalBox* _optionContainer;
+
 	bool _displayingUI = false;
+	bool _displayingOptions = false;
+
+	UPROPERTY(VisibleAnywhere)
+	TArray<class UOptionButtonWidget*> _optionButtons;
 };

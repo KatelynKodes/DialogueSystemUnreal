@@ -7,6 +7,7 @@
 #include <Components/Image.h>
 #include "OptionButtonWidget.h"
 #include <Components/VerticalBox.h>
+#include <Blueprint/WidgetBlueprintLibrary.h>
 
 void UDialogueUIWidget::NativeConstruct()
 {
@@ -23,7 +24,12 @@ void UDialogueUIWidget::NativeConstruct()
 
 	}
 
-	OptionContainer = Cast<UVerticalBox>(CreateWidget(this, UOptionButtonWidget::StaticClass()));
+	if (!OptionContainer)
+	{
+		TArray<UUserWidget*> FoundWidgets;
+		TSubclassOf<UUserWidget> VerticalBoxClass;
+		UWidgetBlueprintLibrary::GetAllWidgetsOfClass(OptionContainer, FoundWidgets, VerticalBoxClass,true);
+	}
 
 	displayUI(_displayingUI);
 }
@@ -99,7 +105,7 @@ void UDialogueUIWidget::displayOptions()
 	//for every option button in the option button list
 	for (int j = _dialogueManager->optionNum(); j >= 0; j--)
 	{
-
+		OptionContainer->AddChildToVerticalBox(_optionButtons[j]);
 	}
 	_displayingOptions = true;
 }

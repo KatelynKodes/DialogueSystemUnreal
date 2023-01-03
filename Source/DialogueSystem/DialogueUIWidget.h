@@ -51,7 +51,6 @@ public:
 	class UVerticalBox* OptionContainer;
 
 private:
-	UPROPERTY(VisibleAnywhere)
 	class ADialogueManager* _dialogueManager;
 
 	bool _displayingUI = false;

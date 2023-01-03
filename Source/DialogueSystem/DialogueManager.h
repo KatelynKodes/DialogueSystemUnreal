@@ -49,6 +49,8 @@ public:
 	/// <returns>An integer</returns>
 	int optionNum() { return _optionNum; }
 
+	TArray<FString> optionNames() { return _optionsText; }
+
 private:
 	/// <summary>
 	/// Goes to the next line of dialogue
@@ -94,5 +96,7 @@ private:
 	int _lineNum;
 	bool _convoIsHappening = false;
 
-	int _optionNum = 0;
+	///OPTIONS
+	int _optionNum = -1;
+	TArray<FString> _optionsText;
 };

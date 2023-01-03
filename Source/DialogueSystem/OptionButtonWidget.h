@@ -17,4 +17,5 @@ class DIALOGUESYSTEM_API UOptionButtonWidget : public UUserWidget
 public:
 	UPROPERTY(BlueprintReadWrite)
 	FString OptionText;
+
 };

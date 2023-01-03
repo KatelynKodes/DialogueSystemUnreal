@@ -47,11 +47,12 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	FLinearColor TextColor;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	class UVerticalBox* OptionContainer;
+
 private:
 	UPROPERTY(VisibleAnywhere)
 	class ADialogueManager* _dialogueManager;
-	UPROPERTY(EditAnywhere)
-	class UVerticalBox* _optionContainer;
 
 	bool _displayingUI = false;
 	bool _displayingOptions = false;

@@ -93,7 +93,13 @@ void ADialogueManager::endConversation()
 	else if (_currentConvo->options.Num() > 0)
 	{
 		// Set the option number to be the length of the current conversations option array
-		_optionNum = _currentConvo->options.Num();
+		_optionNum = _currentConvo->options.Num() - 1;
+
+		for (int i = 0; i < _currentConvo->options.Num(); i++)
+		{
+			_optionsText.Add(_currentConvo->options[i].optionTitle);
+		}
+
 		//Set convo is happening to false
 		_convoIsHappening = false;
 	}

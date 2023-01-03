@@ -6,6 +6,7 @@
 #include "Kismet/GameplayStatics.h"
 #include <Components/Image.h>
 #include "OptionButtonWidget.h"
+#include <Components/VerticalBox.h>
 
 void UDialogueUIWidget::NativeConstruct()
 {
@@ -22,6 +23,8 @@ void UDialogueUIWidget::NativeConstruct()
 
 	}
 
+	OptionContainer = Cast<UVerticalBox>(CreateWidget(this, UOptionButtonWidget::StaticClass()));
+
 	displayUI(_displayingUI);
 }
 
@@ -36,18 +39,15 @@ void UDialogueUIWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTim
 
 		updateText();
 	}
+	else if (_dialogueManager->optionNum() > -1)
+	{
+		if (!_displayingOptions)
+			displayOptions();
+	}
 	else
 	{
-		if (_dialogueManager->optionNum() > 0)
-		{
-			if(!_displayingOptions)
-				displayOptions();
-		}
-		else
-		{
-			if (_displayingUI)
-				displayUI(false);
-		}
+		if (_displayingUI)
+			displayUI(false);
 	}
 }
 
@@ -96,12 +96,10 @@ void UDialogueUIWidget::displayOptions()
 		_optionButtons.Add(Cast<UOptionButtonWidget>(option));
 	}
 
-	//For each option in the list
-	for (int i = 0; i <= _optionButtons.Num(); i++)
+	//for every option button in the option button list
+	for (int j = _dialogueManager->optionNum(); j >= 0; j--)
 	{
-		FString debugText = "Option: " + i;
-		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Red, debugText);
-	}
 
+	}
 	_displayingOptions = true;
 }

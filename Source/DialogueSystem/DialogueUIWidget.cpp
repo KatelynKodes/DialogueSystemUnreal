@@ -87,30 +87,4 @@ void UDialogueUIWidget::displayUI(bool value)
 
 void UDialogueUIWidget::displayOptions()
 {
-	//Empty the current options list
-	_optionButtons.Empty();
-
-	if (OptionContainer != nullptr)
-		GEngine->AddOnScreenDebugMessage(-1, 30.0f, FColor::Yellow, TEXT("Option Container has been assigned!"));
-
-	//For every option
-	for (int i = 0; i <= _dialogueManager->optionNum(); i++)
-	{
-		//Create a userwidget
-		UOptionButtonWidget* option = Cast<UOptionButtonWidget>(CreateWidget(this, UOptionButtonWidget::StaticClass()));
-		
-		//Add userwidget to the list casted as a UOptionButtonWidget
-		_optionButtons.Add(Cast<UOptionButtonWidget>(option));
-	}
-
-	//for every option button in the option button list
-	for (int j = _optionButtons.Num()-1; j >= 0; j--)
-	{
-		//DEBUG
-		FString indexNum= "" + j;
-		GEngine->AddOnScreenDebugMessage(-1, 300.0f, FColor::Yellow, indexNum);
-
-		OptionContainer->AddChild(_optionButtons[j]);
-	}
-	_displayingOptions = true;
 }

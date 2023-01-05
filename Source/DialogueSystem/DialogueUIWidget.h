@@ -34,6 +34,10 @@ private:
 	/// </summary>
 	void displayOptions();
 
+
+	UFUNCTION(BlueprintCallable)
+	void AddButton(class UVerticalBox* optionEntry) {};
+
 public:
 	UPROPERTY(BlueprintReadWrite)
 	FString SpeakerBoxText;
@@ -59,6 +63,5 @@ private:
 	bool _displayingUI = false;
 	bool _displayingOptions = false;
 
-	UPROPERTY(VisibleAnywhere)
 	TArray<class UOptionButtonWidget*> _optionButtons;
 };

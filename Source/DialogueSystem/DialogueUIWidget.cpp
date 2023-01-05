@@ -7,7 +7,7 @@
 #include <Components/Image.h>
 #include "OptionButtonWidget.h"
 #include <Components/VerticalBox.h>
-#include <Blueprint/WidgetBlueprintLibrary.h>
+#include <Blueprint/WidgetTree.h>
 
 void UDialogueUIWidget::NativeConstruct()
 {
@@ -26,9 +26,7 @@ void UDialogueUIWidget::NativeConstruct()
 
 	if (!OptionContainer)
 	{
-		TArray<UUserWidget*> FoundWidgets;
-		TSubclassOf<UUserWidget> VerticalBoxClass;
-		UWidgetBlueprintLibrary::GetAllWidgetsOfClass(OptionContainer, FoundWidgets, VerticalBoxClass,true);
+		OptionContainer = Cast<UVerticalBox>(this->WidgetTree->FindWidget(_verticalBoxName));
 	}
 
 	displayUI(_displayingUI);
@@ -92,20 +90,27 @@ void UDialogueUIWidget::displayOptions()
 	//Empty the current options list
 	_optionButtons.Empty();
 
+	if (OptionContainer != nullptr)
+		GEngine->AddOnScreenDebugMessage(-1, 30.0f, FColor::Yellow, TEXT("Option Container has been assigned!"));
+
 	//For every option
 	for (int i = 0; i <= _dialogueManager->optionNum(); i++)
 	{
 		//Create a userwidget
-		UUserWidget* option = CreateWidget(this, UOptionButtonWidget::StaticClass());
+		UOptionButtonWidget* option = Cast<UOptionButtonWidget>(CreateWidget(this, UOptionButtonWidget::StaticClass()));
 		
 		//Add userwidget to the list casted as a UOptionButtonWidget
 		_optionButtons.Add(Cast<UOptionButtonWidget>(option));
 	}
 
 	//for every option button in the option button list
-	for (int j = _dialogueManager->optionNum(); j >= 0; j--)
+	for (int j = _optionButtons.Num()-1; j >= 0; j--)
 	{
-		OptionContainer->AddChildToVerticalBox(_optionButtons[j]);
+		//DEBUG
+		FString indexNum= "" + j;
+		GEngine->AddOnScreenDebugMessage(-1, 300.0f, FColor::Yellow, indexNum);
+
+		OptionContainer->AddChild(_optionButtons[j]);
 	}
 	_displayingOptions = true;
 }

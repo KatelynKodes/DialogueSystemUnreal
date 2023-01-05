@@ -53,6 +53,9 @@ public:
 private:
 	class ADialogueManager* _dialogueManager;
 
+	UPROPERTY(EditAnywhere)
+	FName _verticalBoxName;
+
 	bool _displayingUI = false;
 	bool _displayingOptions = false;
 

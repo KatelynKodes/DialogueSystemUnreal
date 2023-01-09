@@ -32,11 +32,8 @@ private:
 	/// <summary>
 	/// Displays the options on the widget
 	/// </summary>
-	void displayOptions();
-
-
 	UFUNCTION(BlueprintCallable)
-	void AddButton(class UVerticalBox* optionEntry) {};
+	void displayOptions();
 
 public:
 	UPROPERTY(BlueprintReadWrite)
@@ -59,6 +56,9 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	FName _verticalBoxName;
+
+	UPROPERTY(EditAnywhere)
+	UObject* _optionButtonTemplate;
 
 	bool _displayingUI = false;
 	bool _displayingOptions = false;

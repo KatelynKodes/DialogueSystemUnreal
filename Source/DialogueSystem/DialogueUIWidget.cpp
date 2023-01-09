@@ -6,6 +6,7 @@
 #include "Kismet/GameplayStatics.h"
 #include <Components/Image.h>
 #include "OptionButtonWidget.h"
+#include <UObject/UObjectGlobals.h>
 #include <Components/VerticalBox.h>
 #include <Blueprint/WidgetTree.h>
 
@@ -87,4 +88,10 @@ void UDialogueUIWidget::displayUI(bool value)
 
 void UDialogueUIWidget::displayOptions()
 {
+	for(int i = 0; i < _optionButtons.Num(); i++)
+	{
+		OptionContainer->AddChild(Cast<UWidget>(NewObject<UObject>(_optionButtonTemplate)));
+	}
+
+	_displayingOptions = true;
 }

@@ -6,9 +6,6 @@
 #include "Kismet/GameplayStatics.h"
 #include <Components/Image.h>
 #include "OptionButtonWidget.h"
-#include <UObject/UObjectGlobals.h>
-#include <Components/VerticalBox.h>
-#include <Blueprint/WidgetTree.h>
 
 void UDialogueUIWidget::NativeConstruct()
 {
@@ -23,11 +20,6 @@ void UDialogueUIWidget::NativeConstruct()
 		//Casts the actor as a dialogue manager
 		_dialogueManager = Cast<ADialogueManager>(ManagerActor);
 
-	}
-
-	if (!OptionContainer)
-	{
-		OptionContainer = Cast<UVerticalBox>(this->WidgetTree->FindWidget(_verticalBoxName));
 	}
 
 	displayUI(_displayingUI);
@@ -46,8 +38,7 @@ void UDialogueUIWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTim
 	}
 	else if (_dialogueManager->optionNum() > -1)
 	{
-		if (!_displayingOptions)
-			displayOptions();
+		addOptions(_dialogueManager->optionNum());
 	}
 	else
 	{
@@ -86,12 +77,11 @@ void UDialogueUIWidget::displayUI(bool value)
 	}
 }
 
-void UDialogueUIWidget::displayOptions()
+void UDialogueUIWidget::addOptions(int optionNum)
 {
-	for(int i = 0; i < _optionButtons.Num(); i++)
+	for (int i = 0; i < optionNum; i++)
 	{
-		OptionContainer->AddChild(Cast<UWidget>(NewObject<UObject>(_optionButtonTemplate)));
+		UOptionButtonWidget* newOption;
+		_optionButtons.Add(newOption);
 	}
-
-	_displayingOptions = true;
 }

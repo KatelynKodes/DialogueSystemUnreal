@@ -30,10 +30,10 @@ private:
 	void displayUI(bool value);
 
 	/// <summary>
-	/// Displays the options on the widget
+	/// Adds options from the current dialogue to the option list
 	/// </summary>
-	UFUNCTION(BlueprintCallable)
-	void displayOptions();
+	/// <param name="optionNum">the number of options</param>
+	void addOptions(int optionNum);
 
 public:
 	UPROPERTY(BlueprintReadWrite)
@@ -48,20 +48,13 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	FLinearColor TextColor;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-	class UVerticalBox* OptionContainer;
+	UPROPERTY(BlueprintReadWrite)
+	TArray<class UOptionButtonWidget*> _optionButtons;
 
 private:
 	class ADialogueManager* _dialogueManager;
 
-	UPROPERTY(EditAnywhere)
-	FName _verticalBoxName;
-
-	UPROPERTY(EditAnywhere)
-	UObject* _optionButtonTemplate;
-
 	bool _displayingUI = false;
 	bool _displayingOptions = false;
 
-	TArray<class UOptionButtonWidget*> _optionButtons;
 };

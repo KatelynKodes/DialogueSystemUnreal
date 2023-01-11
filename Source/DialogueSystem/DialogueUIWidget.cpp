@@ -82,6 +82,10 @@ void UDialogueUIWidget::addOptions(int optionNum)
 	for (int i = 0; i < optionNum; i++)
 	{
 		UOptionButtonWidget* newOption;
-		_optionButtons.Add(newOption);
+		OptionButtons.Add(newOption);
 	}
+}
+
+void UDialogueUIWidget::displayOptions()
+{
 }

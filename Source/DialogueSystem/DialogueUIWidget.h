@@ -6,14 +6,11 @@
 #include "Blueprint/UserWidget.h"
 #include "DialogueUIWidget.generated.h"
 
-/**
- * 
- */
 UCLASS(Blueprintable)
 class DIALOGUESYSTEM_API UDialogueUIWidget : public UUserWidget
 {
 	GENERATED_BODY()
-	
+
 private:
 	void NativeConstruct() override;
 	void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
@@ -35,6 +32,9 @@ private:
 	/// <param name="optionNum">the number of options</param>
 	void addOptions(int optionNum);
 
+
+	void displayOptions();
+
 public:
 	UPROPERTY(BlueprintReadWrite)
 	FString SpeakerBoxText;
@@ -49,11 +49,10 @@ public:
 	FLinearColor TextColor;
 
 	UPROPERTY(BlueprintReadWrite)
-	TArray<class UOptionButtonWidget*> _optionButtons;
+	TArray<class UOptionButtonWidget*> OptionButtons;
 
 private:
 	class ADialogueManager* _dialogueManager;
-
 	bool _displayingUI = false;
 	bool _displayingOptions = false;
 

@@ -36,6 +36,10 @@ private:
 	void displayOptions();
 
 public:
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnDisplayOptions();
+
+public:
 	UPROPERTY(BlueprintReadWrite)
 	FString SpeakerBoxText;
 

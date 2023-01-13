@@ -30,7 +30,7 @@ private:
 	/// Adds options from the current dialogue to the option list
 	/// </summary>
 	/// <param name="optionNum">the number of options</param>
-	void addOptions(int optionNum);
+	void addOptions();
 
 
 	void displayOptions();
@@ -53,7 +53,7 @@ public:
 	FLinearColor TextColor;
 
 	UPROPERTY(BlueprintReadWrite)
-	TArray<class UOptionButtonWidget*> OptionButtons;
+	TArray<class UOptionButtonWidget*> OptionButtons = TArray<class UOptionButtonWidget*>();
 
 private:
 	class ADialogueManager* _dialogueManager;

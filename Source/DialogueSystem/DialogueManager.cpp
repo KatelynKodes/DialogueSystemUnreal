@@ -93,9 +93,9 @@ void ADialogueManager::endConversation()
 	else if (_currentConvo->options.Num() > 0)
 	{
 		// Set the option number to be the length of the current conversations option array
-		_optionNum = _currentConvo->options.Num() - 1;
+		_optionNum = _currentConvo->options.Num();
 
-		for (int i = 0; i < _currentConvo->options.Num()-1; i++)
+		for (int i = 0; i < _optionNum; i++)
 		{
 			_optionsText.Add(_currentConvo->options[i].optionTitle);
 		}

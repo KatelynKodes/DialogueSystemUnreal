@@ -78,25 +78,14 @@ void UDialogueUIWidget::displayUI(bool value)
 	}
 }
 
-void UDialogueUIWidget::addOptions(int optionNum)
+void UDialogueUIWidget::addOptions()
 {
-	for (int i = 0; i < optionNum; i++)
-	{
-		UOptionButtonWidget* newOption;
-		OptionButtons.Add(newOption);
-	}
-
-	TArray<FString> optionTitles = _dialogueManager->optionNames();
-	for (int j = 0; j < OptionButtons.Num(); j++)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Red, optionTitles[j]);
-		OptionButtons[j]->OptionText = optionTitles[j];
-	}
+	
 }
 
 void UDialogueUIWidget::displayOptions()
 {
-	addOptions(_dialogueManager->optionNum());
+	addOptions();
 
 	OnDisplayOptions();
 

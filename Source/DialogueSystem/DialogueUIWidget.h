@@ -55,6 +55,9 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	TArray<class UOptionButtonWidget*> OptionButtons = TArray<class UOptionButtonWidget*>();
 
+	UPROPERTY(BlueprintReadWrite)
+	TArray<FString> OptionTitles = TArray<FString>();
+
 private:
 	class ADialogueManager* _dialogueManager;
 	bool _displayingUI = false;

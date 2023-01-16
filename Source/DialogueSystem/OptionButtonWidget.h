@@ -15,7 +15,11 @@ class DIALOGUESYSTEM_API UOptionButtonWidget : public UUserWidget
 	GENERATED_BODY()
 	
 public:
+	/*UFUNCTION(BlueprintCallable)
+	void attachOnClickMethod();*/
+public:
 	UPROPERTY(BlueprintReadWrite)
 	FString OptionText;
-
+	UPROPERTY(BlueprintReadWrite)
+	class UButton* ButtonObject;
 };

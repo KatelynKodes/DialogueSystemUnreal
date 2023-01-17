@@ -6,7 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "DialogueManager.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class DIALOGUESYSTEM_API ADialogueManager : public AActor
 {
 	GENERATED_BODY()
@@ -27,7 +27,7 @@ public:
 	/// Starts a conversation using a data asset of type DialogueDataAsset
 	/// </summary>
 	/// <param name="asset"></param>
-	UFUNCTION(CallInEditor)
+	UFUNCTION(BlueprintCallable)
 	void startConversation(class UDialogueDataAsset* asset);
 	
 	/// <summary>

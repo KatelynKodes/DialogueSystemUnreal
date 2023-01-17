@@ -84,10 +84,10 @@ void ADialogueManager::nextLine()
 void ADialogueManager::endConversation()
 {
 	// Check if there is already a branching convo
-	if (_currentConvo->branchingConvo)
+	if (_currentConvo->ContinuedConvo)
 	{
 		//If there is, start that conversation
-		startConversation(_currentConvo->branchingConvo);
+		startConversation(_currentConvo->ContinuedConvo);
 	}
 	// If there isn't any branching convo, check for options
 	else if (_currentConvo->options.Num() > 0)

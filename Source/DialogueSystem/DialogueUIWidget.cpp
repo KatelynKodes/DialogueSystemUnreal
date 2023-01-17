@@ -99,3 +99,8 @@ void UDialogueUIWidget::displayOptions()
 
 	_displayingOptions = true;
 }
+
+void UDialogueUIWidget::AttatchOptionActions(int index, UButton* button)
+{
+	OnAttatchOptionActions(index, button);
+}

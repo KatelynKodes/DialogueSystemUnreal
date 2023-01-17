@@ -31,6 +31,8 @@ struct FOption
 
 	UPROPERTY(EditAnywhere)
 	FString optionTitle;
+
+	class UDialogueDataAsset* ContinuedConvo;
 };
 
 /**
@@ -46,7 +48,7 @@ public:
 	TArray<FLine> lines;
 
 	UPROPERTY(EditAnywhere)
-	UDialogueDataAsset* branchingConvo;
+	UDialogueDataAsset* ContinuedConvo;
 
 	UPROPERTY(EditAnywhere)
 	TArray<FOption> options;

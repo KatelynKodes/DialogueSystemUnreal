@@ -35,9 +35,16 @@ private:
 
 	void displayOptions();
 
+
 public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnDisplayOptions();
+
+	UFUNCTION(BlueprintCallable)
+	void AttatchOptionActions(int index, class UButton* button);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnAttatchOptionActions(int index, class UButton* button);
 
 public:
 	UPROPERTY(BlueprintReadWrite)
@@ -58,8 +65,10 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	TArray<FString> OptionTitles = TArray<FString>();
 
-private:
+	UPROPERTY(BlueprintReadWrite)
 	class ADialogueManager* _dialogueManager;
+
+private:
 	bool _displayingUI = false;
 	bool _displayingOptions = false;
 

@@ -59,6 +59,11 @@ void ADialogueManager::updateText(FString speakername, FString dialogue)
 	DialogueText = dialogue;
 }
 
+UDialogueDataAsset* ADialogueManager::getOptionBranch(int index)
+{
+	return _currentConvo->options[index].BranchingConvo;
+}
+
 void ADialogueManager::nextLine()
 {
 	//If a conversation is not happening

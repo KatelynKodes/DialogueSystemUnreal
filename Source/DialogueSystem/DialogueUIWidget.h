@@ -40,11 +40,8 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnDisplayOptions();
 
-	UFUNCTION(BlueprintCallable)
-	void AttatchOptionActions(int index, class UButton* button);
-
 	UFUNCTION(BlueprintImplementableEvent)
-	void OnAttatchOptionActions(int index, class UButton* button);
+	void OnAttachOptionActions(int index, class UButton* button);
 
 public:
 	UPROPERTY(BlueprintReadWrite)

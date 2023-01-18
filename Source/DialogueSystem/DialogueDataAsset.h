@@ -32,7 +32,8 @@ struct FOption
 	UPROPERTY(EditAnywhere)
 	FString optionTitle;
 
-	class UDialogueDataAsset* ContinuedConvo;
+	UPROPERTY(EditAnywhere)
+	class UDialogueDataAsset* BranchingConvo;
 };
 
 /**

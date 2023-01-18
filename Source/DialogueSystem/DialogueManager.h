@@ -51,6 +51,13 @@ public:
 
 	TArray<FString> optionNames() { return _optionsText; }
 
+public:
+	/// <summary>
+	/// Grabs the branching dialogue of an option
+	/// </summary>
+	UFUNCTION(BlueprintCallable)
+	class UDialogueDataAsset* getOptionBranch(int index);
+
 private:
 	/// <summary>
 	/// Goes to the next line of dialogue

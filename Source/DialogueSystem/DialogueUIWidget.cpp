@@ -5,6 +5,7 @@
 #include "DialogueManager.h"
 #include "Kismet/GameplayStatics.h"
 #include <Components/Image.h>
+#include "OptionButtonWidget.h"
 
 void UDialogueUIWidget::NativeConstruct()
 {
@@ -16,6 +17,7 @@ void UDialogueUIWidget::NativeConstruct()
 		//THERE SHOULD ONLY BE ONE DIALOGUE MANAGER
 		AActor* ManagerActor = UGameplayStatics::GetActorOfClass(GetWorld(), ADialogueManager::StaticClass());
 
+		//Casts the actor as a dialogue manager
 		_dialogueManager = Cast<ADialogueManager>(ManagerActor);
 
 	}
@@ -34,9 +36,14 @@ void UDialogueUIWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTim
 
 		updateText();
 	}
+	else if (_dialogueManager->optionNum() > -1)
+	{
+		if (!_displayingOptions)
+			displayOptions();
+	}
 	else
 	{
-		if(_displayingUI)
+		if (_displayingUI)
 			displayUI(false);
 	}
 }
@@ -69,4 +76,25 @@ void UDialogueUIWidget::displayUI(bool value)
 
 		_displayingUI = false;
 	}
+}
+
+void UDialogueUIWidget::addOptions()
+{
+	OptionButtons.SetNum(_dialogueManager->optionNum());
+
+	for (int i = 0; i < OptionButtons.Num(); i++)
+	{
+		OptionButtons[i] = NewObject<UOptionButtonWidget>();
+		FString OptionText = _dialogueManager->optionText()[i];
+		OptionButtons[i]->OptionText = OptionText;
+	}
+}
+
+void UDialogueUIWidget::displayOptions()
+{
+	addOptions();
+
+	OnDisplayOptions();
+
+	_displayingOptions = true;
 }

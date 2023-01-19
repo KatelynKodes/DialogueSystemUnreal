@@ -24,6 +24,18 @@ struct FLine
 	FString SpeakerText;
 };
 
+USTRUCT()
+struct FOption
+{
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere)
+	FString optionTitle;
+
+	UPROPERTY(EditAnywhere)
+	class UDialogueDataAsset* BranchingConvo;
+};
+
 /**
  * 
  */
@@ -37,5 +49,8 @@ public:
 	TArray<FLine> lines;
 
 	UPROPERTY(EditAnywhere)
-	UDialogueDataAsset* branchingConvo;
+	UDialogueDataAsset* ContinuedConvo;
+
+	UPROPERTY(EditAnywhere)
+	TArray<FOption> options;
 };

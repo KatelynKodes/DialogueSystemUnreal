@@ -6,7 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "DialogueManager.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class DIALOGUESYSTEM_API ADialogueManager : public AActor
 {
 	GENERATED_BODY()
@@ -27,7 +27,7 @@ public:
 	/// Starts a conversation using a data asset of type DialogueDataAsset
 	/// </summary>
 	/// <param name="asset"></param>
-	UFUNCTION(CallInEditor)
+	UFUNCTION(BlueprintCallable)
 	void startConversation(class UDialogueDataAsset* asset);
 	
 	/// <summary>
@@ -42,6 +42,21 @@ public:
 	/// </summary>
 	/// <returns>True if a conversation is currently ongoing</returns>
 	bool convoIsHappening() { return _convoIsHappening; }
+
+	/// <summary>
+	/// Returns how many options are available to the user
+	/// </summary>
+	/// <returns>An integer</returns>
+	int optionNum() { return _optionNum; }
+
+	TArray<FString> optionText() { return _optionsText; }
+
+public:
+	/// <summary>
+	/// Grabs the branching dialogue of an option
+	/// </summary>
+	UFUNCTION(BlueprintCallable)
+	class UDialogueDataAsset* getOptionBranch(int index);
 
 private:
 	/// <summary>
@@ -88,4 +103,7 @@ private:
 	int _lineNum;
 	bool _convoIsHappening = false;
 
+	///OPTIONS
+	int _optionNum = -1;
+	TArray<FString> _optionsText;
 };

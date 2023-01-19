@@ -59,6 +59,11 @@ void ADialogueManager::updateText(FString speakername, FString dialogue)
 	DialogueText = dialogue;
 }
 
+UDialogueDataAsset* ADialogueManager::getOptionBranch(int index)
+{
+	return _currentConvo->options[index].BranchingConvo;
+}
+
 void ADialogueManager::nextLine()
 {
 	//If a conversation is not happening
@@ -83,14 +88,32 @@ void ADialogueManager::nextLine()
 
 void ADialogueManager::endConversation()
 {
-	if (_currentConvo->branchingConvo)
+	// Check if there is already a branching convo
+	if (_currentConvo->ContinuedConvo)
 	{
-		startConversation(_currentConvo->branchingConvo);
+		//If there is, start that conversation
+		startConversation(_currentConvo->ContinuedConvo);
 	}
+	// If there isn't any branching convo, check for options
+	else if (_currentConvo->options.Num() > 0)
+	{
+		// Set the option number to be the length of the current conversations option array
+		_optionNum = _currentConvo->options.Num();
+		_optionsText.SetNum(_currentConvo->options.Num());
+
+		for (int i = 0; i < _optionNum; i++)
+		{
+			_optionsText[i] = _currentConvo->options[i].optionTitle;
+		}
+
+		//Set convo is happening to false
+		_convoIsHappening = false;
+	}
+	//Otherwise...
 	else
 	{
+		//End the conversation
 		_convoIsHappening = false;
-		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("Conversation has ended"));
 	}
 	
 }

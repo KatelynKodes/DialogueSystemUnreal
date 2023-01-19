@@ -19,6 +19,9 @@ public:
 	void attachOnClickMethod();*/
 public:
 	UPROPERTY(BlueprintReadWrite)
+	class ADialogueManager* _dialogueManager;
+
+	UPROPERTY(BlueprintReadWrite)
 	FString OptionText;
 
 	UPROPERTY(BlueprintReadWrite)

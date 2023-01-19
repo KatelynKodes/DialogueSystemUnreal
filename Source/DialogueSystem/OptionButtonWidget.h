@@ -13,13 +13,11 @@ UCLASS(Blueprintable)
 class DIALOGUESYSTEM_API UOptionButtonWidget : public UUserWidget
 {
 	GENERATED_BODY()
-	
+
 public:
-	/*UFUNCTION(BlueprintCallable)
-	void attachOnClickMethod();*/
-public:
+
 	UPROPERTY(BlueprintReadWrite)
-	class ADialogueManager* _dialogueManager;
+	class ADialogueManager* manager;
 
 	UPROPERTY(BlueprintReadWrite)
 	FString OptionText;

@@ -41,7 +41,7 @@ public:
 	void OnDisplayOptions();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
-	void OnAttachOptionActions(int index, class UOptionButtonWidget* OptionWidget);
+	void OnAttachOptionActions(class UOptionButtonWidget* OptionWidget);
 
 public:
 	UPROPERTY(BlueprintReadWrite)

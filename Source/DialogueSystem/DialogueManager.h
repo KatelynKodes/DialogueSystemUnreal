@@ -7,6 +7,9 @@
 #include "DialogueManager.generated.h"
 
 UCLASS(Blueprintable)
+/// <summary>
+/// The DialogueManager is an actor that reads DialogueDataAsset data and storing it.
+/// </summary>
 class DIALOGUESYSTEM_API ADialogueManager : public AActor
 {
 	GENERATED_BODY()
@@ -49,6 +52,11 @@ public:
 	/// <returns>An integer</returns>
 	int optionNum() { return _optionNum; }
 
+	/// <summary>
+	/// Returns the private variable containing the option texts from the current conversation dialogue data
+	/// asset
+	/// </summary>
+	/// <returns></returns>
 	TArray<FString> optionText() { return _optionsText; }
 
 public:
@@ -92,18 +100,42 @@ public:
 	FLinearColor TextColor;
 
 private:
-	UPROPERTY(VisibleAnywhere)
+	/// <summary>
+	/// The lines of the current dialogue data asset.
+	/// </summary>
 	TArray<FString> _lines;
 
+	/// <summary>
+	/// the current dialogue data asset.
+	/// </summary>
 	class UDialogueDataAsset* _currentConvo;
 
 	UPROPERTY(EditAnywhere)
+	/// <summary>
+	/// The default DialogueDataAsset, will run this on start
+	/// </summary>
 	class UDialogueDataAsset* _debugConvo;
 
+	/// <summary>
+	/// The current line number the dialoguemanager is reading off of, used to make sure the dialogue manager
+	/// doesn't go out of bounds on the line struct array in the current conversation
+	/// </summary>
 	int _lineNum;
+
+	/// <summary>
+	/// A boolean tracking if a conversation is happening 
+	/// </summary>
 	bool _convoIsHappening = false;
 
-	///OPTIONS
+	//OPTIONS
+	
+	/// <summary>
+	/// The number of options present in the current conversation
+	/// </summary>
 	int _optionNum = -1;
+
+	/// <summary>
+	/// An array of strings containing the option titles from the option struct array in the current conversation
+	/// </summary>
 	TArray<FString> _optionsText;
 };

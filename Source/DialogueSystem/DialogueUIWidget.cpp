@@ -81,13 +81,12 @@ void UDialogueUIWidget::displayUI(bool value)
 void UDialogueUIWidget::addOptions()
 {
 	OptionButtons.SetNum(_dialogueManager->optionNum());
-	OptionTitles.SetNum(_dialogueManager->optionNames().Num());
-	UOptionButtonWidget* optionButton = NewObject<UOptionButtonWidget>();
 
 	for (int i = 0; i < OptionButtons.Num(); i++)
 	{
-		OptionButtons[i] = optionButton;
-		OptionTitles[i] = _dialogueManager->optionNames()[i];
+		OptionButtons[i] = NewObject<UOptionButtonWidget>();
+		FString OptionText = _dialogueManager->optionText()[i];
+		OptionButtons[i]->OptionText = OptionText;
 	}
 }
 

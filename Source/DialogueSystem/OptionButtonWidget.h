@@ -20,6 +20,10 @@ public:
 public:
 	UPROPERTY(BlueprintReadWrite)
 	FString OptionText;
+
 	UPROPERTY(BlueprintReadWrite)
 	class UButton* ButtonObject;
+
+	UPROPERTY(BlueprintReadWrite)
+	class UDialogueDataAsset* branchingConvo;
 };

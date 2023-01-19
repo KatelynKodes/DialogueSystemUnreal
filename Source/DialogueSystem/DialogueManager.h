@@ -49,7 +49,7 @@ public:
 	/// <returns>An integer</returns>
 	int optionNum() { return _optionNum; }
 
-	TArray<FString> optionNames() { return _optionsText; }
+	TArray<FString> optionText() { return _optionsText; }
 
 public:
 	/// <summary>

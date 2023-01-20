@@ -31,6 +31,9 @@ void UDialogueUIWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTim
 
 	if (_dialogueManager->convoIsHappening())
 	{
+		if (_displayingOptions)
+			hideOptions();
+
 		if (!_displayingUI)
 			displayUI(true);
 
@@ -97,4 +100,10 @@ void UDialogueUIWidget::displayOptions()
 	OnDisplayOptions();
 
 	_displayingOptions = true;
+}
+
+void UDialogueUIWidget::hideOptions()
+{
+	_displayingOptions = false;
+	OnHideOptions();
 }

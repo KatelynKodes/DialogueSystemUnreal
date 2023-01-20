@@ -41,6 +41,10 @@ private:
 	/// </summary>
 	void displayOptions();
 
+	/// <summary>
+	/// Removes options from screen then sets the option array to a new array
+	/// </summary>
+	void hideOptions();
 
 public:
 	UFUNCTION(BlueprintImplementableEvent)
@@ -48,6 +52,12 @@ public:
 	/// An event implimented in blueprints, used to display the option buttons to the screen
 	/// </summary>
 	void OnDisplayOptions();
+
+	/// <summary>
+	/// An event implimented in blueprints, used to remove the option buttons from the screen
+	/// </summary>
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnHideOptions();
 
 public:
 	UPROPERTY(BlueprintReadWrite)

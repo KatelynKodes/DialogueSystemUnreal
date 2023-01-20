@@ -34,6 +34,9 @@ void ADialogueManager::startConversation(UDialogueDataAsset* asset)
 	//Set the line number to 0
 	_lineNum = 0;
 
+	//Set option num to -1
+	_optionNum = -1;
+
 	//Clear the lines array
 	_lines.Empty();
 
